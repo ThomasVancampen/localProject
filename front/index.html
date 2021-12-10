@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GIF</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="modules.js"></script>
+  </head>
+  <body>
+    <nav class="navbar is-primary">
+        <div class="navbar-brand">
+          <a style="font-weight: bold;" class="navbar-item" href="#">
+            Gif-Creater
+          </a>
+          <div class="navbar-item navbar-end">
+            <button class="button is-white"  onclick="openReg()">Register</button>
+          </div>
+          <div class="navbar-item navbar-end">
+            <button class="button is-white"  onclick="openLog()">Login</button>
+          </div>
+          
+          <div class="navbar-burger" data-target="navbarExampleTransparentExample">
+          </div>
+        </div>
+        </nav><br><br>
+        <div class="container" id="reg">
+        <div class="notification is-primary column is-two-fifths" >
+            <button class="delete" onclick="closeReg()"></button>
+            <div class="field column is-half">
+                <p class="control has-icons-left has-icons-right">
+                  <input class="input" type="email" placeholder="Email" id="email">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field column is-half">
+                <p class="control has-icons-left">
+                  <input class="input" type="password" placeholder="Password" id="password">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                </p>
+              </div>
+              <button class="button is-white" onclick="register()">Register</button>
+          </div>
+        </div>
+        <div class="container" id="log">
+            <div class="notification is-primary column is-two-fifths">
+                <button class="delete" onclick="closeLog()"></button>
+                <div class="field column is-half">
+                    <p class="control has-icons-left has-icons-right">
+                      <input class="input" type="email" placeholder="Email" id="emailLog">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                      </span>
+                      <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                      </span>
+                    </p>
+                  </div>
+                  <div class="field column is-half">
+                    <p class="control has-icons-left">
+                      <input class="input" type="password" placeholder="Password" id="passwordLog">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                      </span>
+                    </p>
+                  </div>
+                  <button class="button is-white" onclick="login()">Login</button>
+              </div>
+            </div>
+        <div class="container">
+        <form action="http://localhost:3000/getuploadurl" method="get" enctype="multipart/form-data"> 
+            Select images to Upload: <input id="imageInput" type="file" accept="image/*"><br/>
+            <input class="button is-primary"type="Submit" value="Upload" name="upload" />
+        </form>
+    </div>
+        <h1>Featured GIF:</h1>
+        <img src="http://i.stack.imgur.com/SBv4T.gif" alt="this slowpoke moves"  width="250" />
+
+        
+        <script src="script.js"></script>
+  </body>
+</html>
