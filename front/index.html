@@ -76,9 +76,12 @@
               </div>
             </div>
         <div class="container">
-        <form action="http://localhost:3000/getuploadurl" method="get" enctype="multipart/form-data"> 
-            Select images to Upload: <input id="imageInput" type="file" accept="image/*"><br/>
-            <input class="button is-primary"type="Submit" value="Upload" name="upload" />
+        <form> 
+            Select images to Upload: <input id="imageInput" type="file" name="file"><br/>
+            <input class="button is-primary"type="submit" value="Upload" name="upload" />
+        </form>
+        <form action="http://ec2-3-237-32-34.compute-1.amazonaws.com:3000/signaluploadcompleted">
+        <input type="submit" value="Get GIF" />
         </form>
     </div>
         <h1>Featured GIF:</h1>

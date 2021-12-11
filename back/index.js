@@ -2,10 +2,13 @@ const express = require('express')
 const AWS = require('aws-sdk');
 const axios = require('axios');
 const {v4} = require("uuid");
-
+const cors = require('cors');
 const app = express();
 
-const s3 = new AWS.S3();
+const s3 = new AWS.S3({
+    region: 'us-east-1',
+})
+
 const bucketName = 'gif-2-bucket';
 app.use(express.static('../front'));
 app.use(express.json());
@@ -14,12 +17,23 @@ res.json('Hello world!');
 });
 
 
-app.get('/getuploadurl',(req,res)=>{
-const objectId = v4();
-console.log('return upload url with objectId: ',objectId);
-const generatedUrl = generatePutUrl(objectId);
-res.json(generatedUrl);
-});
+app.use(cors());
+
+app.get('/getuploadurl', async (req,res)=>{
+    await s3.createPresignedPost({
+        Fields:{
+            key: v4(),
+        },
+        Conditions: [
+            ["starts with", "$Content-Type", "image/"],
+            ["content-length-range", 0, 1000000],
+            ],
+            Expires: 900,
+            Bucket: bucketName,
+    }, (err, signed) => {
+        res.json(signed);
+    });
+})
 
 app.post('/signaluploadcompleted',(req,res)=>{
 const {uploadUrls} = req.body;

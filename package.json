@@ -13,6 +13,7 @@
     "amazon-cognito-identity-js-node": "^0.0.3",
     "aws-sdk": "^2.1045.0",
     "axios": "^0.24.0",
+    "cors": "^2.8.5",
     "express": "^5.0.0-alpha.8",
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
