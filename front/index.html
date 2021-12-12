@@ -6,7 +6,6 @@
     <title>GIF</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
-    <script type="module" src="modules.js"></script>
   </head>
   <body>
     <nav class="navbar is-primary">
@@ -77,11 +76,27 @@
             </div>
         <div class="container">
         <form> 
-            Select images to Upload: <input id="imageInput" type="file" name="file"><br/>
-            <input class="button is-primary"type="submit" value="Upload" name="upload" />
+        <div class="file has-name" id="file-js-example">
+        <label class="file-label">
+           <input class="file-input" id="imageInput" type="file" name="file" accept="image/*">
+            <span class="file-cta">
+      <span class="file-icon">
+        <i class="fas fa-upload"></i>
+      </span>
+      <span class="file-label">
+        Choose a file…
+      </span>
+    </span>
+    <span class="file-name">
+      No file selected
+    </span>
+  </label>
+  <input class="button is-primary"type="submit" value="Upload" name="upload"/>
+</div>
+
         </form>
-        <form action="http://ec2-3-237-32-34.compute-1.amazonaws.com:3000/signaluploadcompleted">
-        <input type="submit" value="Get GIF" />
+        <form action="http://ec2-44-200-107-17.compute-1.amazonaws.com:3000/signaluploadcompleted" method="POST">
+        <input class="button is-primary" type="submit" value="Get gif"/>
         </form>
     </div>
         <h1>Featured GIF:</h1>

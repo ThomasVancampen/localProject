@@ -25,15 +25,15 @@ app.get('/getuploadurl', async (req,res)=>{
             key: v4(),
         },
         Conditions: [
-            ["starts with", "$Content-Type", "image/"],
+            ["starts-with", "$Content-Type", "image/"],
             ["content-length-range", 0, 1000000],
             ],
             Expires: 900,
             Bucket: bucketName,
     }, (err, signed) => {
-        res.json(signed);
-    });
-})
+    res.json(signed);
+  });
+});
 
 app.post('/signaluploadcompleted',(req,res)=>{
 const {uploadUrls} = req.body;
